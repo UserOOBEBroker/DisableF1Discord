@@ -7,11 +7,15 @@
  */
 
 module.exports = class DisableF1Discord {
-    start() { 
+    constructor() { 
+        this.handleKeydown = this.handleKeydown.bind(this);
+    }
+
+    start() {
         window.addEventListener('keydown', this.handleKeydown);
     }
 
-    stop() { 
+    stop() {
         window.removeEventListener('keydown', this.handleKeydown);
     }
 
