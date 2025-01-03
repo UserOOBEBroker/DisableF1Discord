@@ -2,20 +2,23 @@
  * @name Disable F1 Discord Help
  * @description disables help in discord
  * @version 1.0.0
- * @author Your Name
+ * @author YourName
+ * @source https://github.com/UserOOBEBroker/DisableF1Discord
  */
 
 module.exports = class DisableF1Discord {
-    start() {
-        window.addEventListener('keydown', function(event) {
-            if (event.key === 'F1') {
-                event.preventDefault();  
-                console.log("help f1 for discord off); 
-            }
-        });
+    start() { 
+        window.addEventListener('keydown', this.handleKeydown);
     }
 
-    stop() {
-        window.removeEventListener('keydown', this.keyListener);
+    stop() { 
+        window.removeEventListener('keydown', this.handleKeydown);
+    }
+
+    handleKeydown(event) {
+        if (event.key === 'F1') {
+            event.preventDefault(); 
+            console.log("help in discord is disabled");
+        }
     }
 };
