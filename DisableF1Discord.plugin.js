@@ -1,20 +1,21 @@
-// ==UserScript==
-// @name         Disable F1 Discord Help
-// @description  disables help in discord
-// @version      1.0.0
-// @author       komaru.vshoke
-// @license      MIT
-// @updateURL    https://raw.githubusercontent.com/UserOOBEBroker/DisableF1Discord/main/DisableF1Discord.plugin.js
-// @downloadURL  https://raw.githubusercontent.com/UserOOBEBroker/DisableF1Discord/main/DisableF1Discord.plugin.js
-// ==/UserScript==
+/**
+ * @name Disable F1 Discord Help
+ * @description disables help in discord
+ * @version 1.0.0
+ * @author Your Name
+ */
 
-(function() {
-    'use strict';
+module.exports = class DisableF1Discord {
+    start() {
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'F1') {
+                event.preventDefault();  
+                console.log("help f1 for discord off); 
+            }
+        });
+    }
 
-    window.addEventListener('keydown', function(event) {
-        if (event.key === 'F1') {
-            event.preventDefault();  // Предотвращаем стандартное действие для F1
-            console.log("Справка Discord (F1) отключена"); // Для отладки
-        }
-    });
-})();
+    stop() {
+        window.removeEventListener('keydown', this.keyListener);
+    }
+};
